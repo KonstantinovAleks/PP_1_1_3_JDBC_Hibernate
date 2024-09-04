@@ -31,9 +31,9 @@ public class UserDaoHibernateImpl implements UserDao {
             transaction.commit();
         } catch (HibernateException e) {
             logger.error("Ошибка при создании таблицы users: ", e);
-            if (transaction != null) {
-                transaction.rollback();
-            }
+            transaction.rollback();
+        } catch (Exception e) {
+            throw new NullPointerException();
         }
     }
 
@@ -46,9 +46,9 @@ public class UserDaoHibernateImpl implements UserDao {
             transaction.commit();
         } catch (HibernateException e) {
             logger.error("Ошибка при удалении таблицы users: ", e);
-            if (transaction != null) {
-                transaction.rollback();
-            }
+            transaction.rollback();
+        } catch (Exception e) {
+            throw new NullPointerException();
         }
     }
 
@@ -61,9 +61,9 @@ public class UserDaoHibernateImpl implements UserDao {
             transaction.commit();
         } catch (HibernateException e) {
             logger.error("Ошибка при сохранении user'а в таблицу users: ", e);
-            if (transaction != null) {
-                transaction.rollback();
-            }
+            transaction.rollback();
+        } catch (Exception e) {
+            throw new NullPointerException();
         }
     }
 
@@ -76,9 +76,9 @@ public class UserDaoHibernateImpl implements UserDao {
             transaction.commit();
         } catch (HibernateException e) {
             logger.error("Ошибка при удалении user'а из таблицы users: ", e);
-            if (transaction != null) {
-                transaction.rollback();
-            }
+            transaction.rollback();
+        } catch (Exception e) {
+            throw new NullPointerException();
         }
     }
 
@@ -97,6 +97,8 @@ public class UserDaoHibernateImpl implements UserDao {
         } catch (HibernateException e) {
             logger.error("Ошибка при получении всех user'ов: ", e);
             transaction.rollback();
+        } catch (Exception e) {
+            throw new NullPointerException();
         }
         return usersList;
     }
@@ -110,9 +112,9 @@ public class UserDaoHibernateImpl implements UserDao {
             transaction.commit();
         } catch (HibernateException e) {
             logger.error("Ошибка при очистки таблицы users: ", e);
-            if (transaction != null) {
-                transaction.rollback();
-            }
+            transaction.rollback();
+        } catch (Exception e) {
+            throw new NullPointerException();
         }
     }
 }
